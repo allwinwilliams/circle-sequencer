@@ -12,7 +12,17 @@ function App() {
   }
 
   return (
-    <div>
+    <div
+      style={{
+        display: 'flex', 
+        flexDirection: 'column', 
+        justifyContent: 'center', 
+        alignItems: 'center', 
+        width: '100vw',
+        height: '100vh',
+        margin: 0
+      }}
+    >
       {!started && (
         <div style={{textAlign:'center', padding:'50px'}}>
           <h1>Welcome to the Circle Sequencer</h1>

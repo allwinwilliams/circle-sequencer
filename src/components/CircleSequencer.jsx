@@ -80,7 +80,17 @@ function CircleSequencer() {
   }
 
   return (
-    <div style={{ textAlign: 'center', padding: '20px' }}>
+    <div 
+      style={{
+        display: 'flex', 
+        flexDirection: 'column', 
+        justifyContent: 'center', 
+        alignItems: 'center', 
+        width: '100vw',
+        height: '100vh',
+        margin: 0
+      }}
+    >
       <h1>Circle Sequencer</h1>
       <div style={{ marginBottom: '20px' }}>
         <label>
@@ -102,6 +112,7 @@ function CircleSequencer() {
       />
     </div>
   );
+  
 }
 
 export default CircleSequencer;

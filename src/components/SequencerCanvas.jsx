@@ -3,8 +3,8 @@ import React, { useState } from 'react';
 import CategorySelection from './CategorySelection';
 import Dot from './Dot';
 
-const RADIUS = 100;
-const CENTER = {x:150, y:150};
+const RADIUS = 200;
+const CENTER = {x:200, y:200};
 
 function SequencerCanvas({ angle, dots, onChangeDots }) {
   const [showCategorySelection, setShowCategorySelection] = useState(false);
@@ -72,36 +72,49 @@ function SequencerCanvas({ angle, dots, onChangeDots }) {
   };
 
   return (
-    <div style={{width:'300px',margin:'0 auto',border:'1px solid #ccc',borderRadius:'4px',position:'relative'}}>
+    <div style={{width:'400px', margin:'0 auto', border:'1px solid #ccc', borderRadius:'4px', position:'relative'}}>
       {showCategorySelection && 
         <CategorySelection 
           x={selectionPosition.x} 
           y={selectionPosition.y}
           onSelect={handleCategorySelect} 
-          isEditing={selectedDotId!=null}
+          isEditing={selectedDotId != null}
+          onClose={() => setShowCategorySelection(false)}
         />
       }
       <svg 
-        width="100%" 
-        height="300px" 
-        viewBox="0 0 300 300" 
+        width="400px" 
+        height="400px" 
+        viewBox="0 0 400 400" 
         style={{ background: '#f9f9f9', display: 'block', margin: '0 auto' }}
         onClick={handleBackgroundClick}
       >
         {/* Background circle */}
-        <circle cx="150" cy="150" r="100" fill="#eee" stroke="#ccc" strokeWidth="2"/>
+        <circle cx="200" cy="200" r="200" fill="#eee" stroke="#ccc" strokeWidth="2"/>
+        
+        <image 
+          href="/assets/grid.svg" 
+          x="0" 
+          y="0" 
+          width="400" 
+          height="400"
+          preserveAspectRatio="xMidYMid slice"
+        />
+        
         {/* Center dot */}
-        <circle cx="150" cy="150" r="5" fill="black"/>
+        <circle cx="200" cy="200" r="5" fill="red"/>
+        
         {/* Radar line */}
         <line 
-          x1="150" 
-          y1="150" 
-          x2="150" 
-          y2="50" 
+          x1="320" 
+          y1="320" 
+          x2="200" 
+          y2="200" 
           stroke="red" 
           strokeWidth="2"
-          transform={`rotate(${angle},150,150)`}
+          transform={`rotate(${angle},200,200)`}
         />
+        
         {/* Render dots */}
         {dots.map(dot => (
           <Dot 
@@ -109,12 +122,13 @@ function SequencerCanvas({ angle, dots, onChangeDots }) {
             dot={dot} 
             onSelect={handleDotSelect}
             onDrag={handleDotDrag}
-            radius={RADIUS}
+            radius={RADIUS} // Make sure RADIUS aligns with your new coordinate system if needed
           />
         ))}
       </svg>
     </div>
   );
+  
 }
 
 export default SequencerCanvas;
