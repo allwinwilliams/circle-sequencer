@@ -103,18 +103,15 @@ function SequencerCanvas({ angle, dots, onChangeDots }) {
         
         {/* Center dot */}
         <circle cx="200" cy="200" r="5" fill="red"/>
-        
-        {/* Radar line */}
         <line 
-          x1="320" 
-          y1="320" 
-          x2="200" 
-          y2="200" 
-          stroke="red" 
-          strokeWidth="2"
-          transform={`rotate(${angle},200,200)`}
-        />
-        
+            x1="200" 
+            y1="200" 
+            x2="400" 
+            y2="100" 
+            stroke="red" 
+            strokeWidth="2"
+            transform={`rotate(${angle},200,200)`}
+            />
         {/* Render dots */}
         {dots.map(dot => (
           <Dot 

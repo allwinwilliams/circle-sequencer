@@ -14,7 +14,7 @@ function CircleSequencer() {
   const [bpm, setBpm] = useState(120);
   const [dots, setDots] = useState([]);
   const [allLoaded, setAllLoaded] = useState(false);
-  const [angle, setAngle] = useState(0);
+  const [angle, setAngle] = useState(45);
 
   const playersRef = useRef({});
   const prevAngleRef = useRef(0);
@@ -97,8 +97,8 @@ function CircleSequencer() {
           BPM: {bpm}
           <input 
             type="range" 
-            min="40" 
-            max="360" 
+            min="20" 
+            max="240" 
             value={bpm} 
             onChange={e => setBpm(Number(e.target.value))}
             style={{ marginLeft: '10px', width: '200px' }}
